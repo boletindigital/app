@@ -244,7 +244,7 @@ var PerfilPage = (function () {
         toast.present();
     };
     PerfilPage.prototype.openMisExpedientesPage = function (strParam) {
-        this.navCtrl.push(mis_expedientes_1.MisExpedientesPage, { strParam: strParam });
+        this.navCtrl.setRoot(mis_expedientes_1.MisExpedientesPage, { strParam: strParam });
     };
     PerfilPage = __decorate([
         core_1.Component({

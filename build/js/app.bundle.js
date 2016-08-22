@@ -90,6 +90,20 @@ var ExpedientePage = (function () {
             console.log(err);
         }, function () { return console.log('Instancias.findAll::done'); });
     };
+    ExpedientePage.prototype.dateFormat = function (dateString, dateFormat) {
+        var d = new Date(dateString);
+        var months = [
+            'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+            'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+        ];
+        if ('yearNumber' === dateFormat)
+            return "" + d.getFullYear();
+        if ('nombreDelMes' === dateFormat)
+            return months[d.getMonth()];
+        if ('diaDelMes' === dateFormat)
+            return "" + d.getDate();
+        return d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
+    };
     ExpedientePage = __decorate([
         core_1.Component({
             templateUrl: 'build/pages/expediente/expediente.html',
@@ -282,14 +296,19 @@ function mapAcuerdos(response) {
 function toAcuerdo(r) {
     var acuerdo = ({
         fecha: new Date(r.fecha),
-        secretaría: r.secretaria,
-        actor: r.actor,
-        demandado: r.demandado,
+        secretaría: r.secretaria === 'sNI' ? 'no indicada' : r.secretaria,
+        actor: r.actor ? firstWordsOf(r.actor, 4, 30) : '',
+        demandado: r.demandado ? firstWordsOf(r.demandado, 4, 30) : '',
         concepto: r.concepto,
         autorizado: r.autorizado,
         tipoDeJuicio: r.tipoDeJuicio
     });
     return acuerdo;
+}
+function firstWordsOf(str, words, max) {
+    if (str.length <= max)
+        return str;
+    return str.slice(0, max);
 }
 var Acuerdo = (function () {
     function Acuerdo() {

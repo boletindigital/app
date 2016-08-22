@@ -18,7 +18,11 @@
 
 <ion-list>
   <ion-item *ngFor="let a of acuerdos">
-    <h2>{{a.fecha | date}} <small>secretaría {{a['secretaría']}}</small></h2>
+    <h2>
+      <b>{{dateFormat(a.fecha, 'diaDelMes')}} de {{dateFormat(a.fecha, 'nombreDelMes')}}</b>
+      de {{dateFormat(a.fecha, 'yearNumber')}}
+      <ion-badge light item-right>secretaría {{a['secretaría']}}</ion-badge>
+    </h2>
     <h3>{{a.actor}}</h3>
     <h3>{{a.demandado}}</h3>
   </ion-item>

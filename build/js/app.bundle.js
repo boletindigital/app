@@ -278,8 +278,16 @@ var Acuerdos = (function () {
         this.API = "https://api.boletin.damianfernandez.mx";
     }
     Acuerdos.prototype.findByExpediente = function (expediente) {
+        var filtro = {
+            organo: expediente.claveInstancia.charAt(0),
+            materia: expediente.claveInstancia.charAt(1),
+            numero: parseInt(expediente.claveInstancia.substring(2, 20)),
+            año: expediente.año,
+            consecutivo: expediente.consecutivo,
+            page: 1
+        };
         var acuerdos$ = this.authHttp
-            .post(this.API + "/acuerdo/filter", { page: 1, organo: "J", materia: "F", numero: 7, año: 2004, consecutivo: 381 })
+            .post(this.API + "/acuerdo/filter", filtro)
             .map(mapAcuerdos);
         return acuerdos$;
     };

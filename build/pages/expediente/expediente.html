@@ -17,7 +17,7 @@
 </ion-card>
 
 <ion-list>
-  <ion-item-group *ngFor="let group of acuerdosPorMes">
+  <ion-item-group *ngFor="let group of getAcuerdosPorMes()">
     <ion-item-divider sticky>
       {{group.fecha.format('MMMM [de] YYYY')}}
     </ion-item-divider>

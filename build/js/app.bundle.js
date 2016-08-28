@@ -397,6 +397,8 @@ function mapExpedientes(response) {
 function toExpediente(r) {
     var ultimoAcuerdo = ({
         fecha: moment(r.expediente.ultimoAcuerdo.fecha.substring(0, 10)),
+        actor: r.expediente.ultimoAcuerdo.actor,
+        demandado: r.expediente.ultimoAcuerdo.demandado,
     });
     var expediente = ({
         claveInstancia: r.expediente.instancia,

@@ -25,6 +25,10 @@
   <ion-item *ngFor="let e of misExpedientes" (click)="requestDetailedExpediente($event, e)">
     <h2>{{e.claveInstancia}}</h2>
     <h3>{{e['año']}}/{{e.consecutivo}} <small>{{e.acuerdos}} acuerdos</small></h3>
+    <p>
+      {{e.ultimoAcuerdo.actor}}<br/>
+      {{e.ultimoAcuerdo.demandado}}
+    </p>
     <h4>
       <ion-badge light>{{e.ultimoAcuerdo.fecha.format('dddd')}}</ion-badge>
       {{e.ultimoAcuerdo.fecha.fromNow()}}</h4>

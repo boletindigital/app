@@ -8,7 +8,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 <ion-card>
   <ion-card-content>
     <strong>{{expediente.claveInstancia}}</strong> {{expediente['año']}}/{{expediente.consecutivo}} <br />
@@ -17,15 +17,20 @@
 </ion-card>
 
 <ion-list>
-  <ion-item *ngFor="let a of acuerdos">
-    <h2>
-      <b>{{a.fecha.format('DD [de] MMMM')}}</b>
-      {{a.fecha.format('[de] YYYY')}}
-      <ion-badge light item-right>secretaría {{a['secretaría']}}</ion-badge>
-    </h2>
-    <h3>{{a.actor}}</h3>
-    <h3>{{a.demandado}}</h3>
-  </ion-item>
+  <ion-item-group *ngFor="let group of acuerdosPorMes">
+    <ion-item-divider sticky>
+      {{group.fecha.format('MMMM [de] YYYY')}}
+    </ion-item-divider>
+    <ion-item *ngFor="let a of group.acuerdos">
+      <h2>
+        <b>{{a.fecha.format('dddd')}}</b>
+        {{a.fecha.format('DD [de] MMMM')}}
+        <ion-badge light item-right>secretaría {{a['secretaría']}}</ion-badge>
+      </h2>
+      <h3>{{a.actor}}</h3>
+      <h3>{{a.demandado}}</h3>
+    </ion-item>
+  </ion-item-group>
 </ion-list>
 
 </ion-content>

@@ -205,9 +205,9 @@ var MisExpedientesPage = (function () {
         var today = moment().startOf('day');
         var ayer = moment().subtract(1, 'days');
         if (today.isSame(fecha, 'days'))
-            return { timeElapsed: 'Hoy', isTooFar: false, daysFromNow: today.diff(fecha, 'days') };
+            return { timeElapsed: 'hoy', isTooFar: false, daysFromNow: today.diff(fecha, 'days') };
         if (ayer.isSame(fecha, 'days'))
-            return { timeElapsed: 'Ayer', isTooFar: false, daysFromNow: today.diff(fecha, 'days') };
+            return { timeElapsed: 'ayer', isTooFar: false, daysFromNow: today.diff(fecha, 'days') };
         return { timeElapsed: "" + fecha.from(today), isTooFar: true, daysFromNow: today.diff(fecha, 'days') };
     };
     MisExpedientesPage = __decorate([

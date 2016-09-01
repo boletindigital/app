@@ -35,8 +35,7 @@
       {{e.ultimoAcuerdo.demandado}}
     </p>
     <h4 *ngIf="!dateFromNow(e.ultimoAcuerdo.fecha).isTooFar">
-      Actualizado
-      <ion-badge>{{dateFromNow(e.ultimoAcuerdo.fecha).timeElapsed}}</ion-badge>
+      <ion-badge>Actualizado {{dateFromNow(e.ultimoAcuerdo.fecha).timeElapsed}}</ion-badge>
     </h4>
     <h4 *ngIf="dateFromNow(e.ultimoAcuerdo.fecha).isTooFar">
       Último acuerdo:
